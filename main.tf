@@ -33,7 +33,8 @@ resource "aws_security_group_rule" "ingress_rules" {
 ##########################
 # Security group rules with "source_security_group_id", but without "cidr_blocks" and "self"
 resource "aws_security_group_rule" "ingress_with_source_security_group_id" {
-  count = "${length(var.ingress_with_source_security_group_id)}"
+  #count = "${length(var.ingress_with_source_security_group_id)}"
+  count = "${var.ingress_with_source_security_group_id_count}"
 
   security_group_id = "${aws_security_group.this.id}"
   type              = "ingress"
@@ -121,7 +122,8 @@ resource "aws_security_group_rule" "egress_rules" {
 #########################
 # Security group rules with "source_security_group_id", but without "cidr_blocks" and "self"
 resource "aws_security_group_rule" "egress_with_source_security_group_id" {
-  count = "${length(var.egress_with_source_security_group_id)}"
+  #count = "${length(var.egress_with_source_security_group_id)}"
+  count = "${var.egress_with_source_security_group_id_count}"
 
   security_group_id = "${aws_security_group.this.id}"
   type              = "egress"
